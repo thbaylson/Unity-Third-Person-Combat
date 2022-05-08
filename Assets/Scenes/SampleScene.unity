@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelPrefab: {fileID: 3880954319387066642, guid: adf8bd1a56fec5f479484c92463ed058, type: 3}
   levelInstance: {fileID: 0}
-  playerPrefab: {fileID: 1603177436950286853, guid: 0c3aa78819d620c43985b0c9a4d9c1df, type: 3}
+  playerPrefab: {fileID: 1825084646016831321, guid: 0c3aa78819d620c43985b0c9a4d9c1df, type: 3}
   numRooms: 7
   keyDropChance: 5
   backTrackFactor: 3
