@@ -9,6 +9,7 @@ namespace ThirdPersonCombat.RuntimeLevels
     public class Door : MonoBehaviour
     {
         [SerializeField] TextMeshPro textMeshPro;
+        [SerializeField] TextMeshPro textMeshPro2;
         [SerializeField] bool isLocked = true;
 
         // Doors need two colliders. One as a trigger and one as a non-trigger so players can't move through them
@@ -26,6 +27,7 @@ namespace ThirdPersonCombat.RuntimeLevels
             if (textMeshPro != null)
             {
                 textMeshPro.text = (isLocked) ? "Locked Door" : "Open Door";
+                textMeshPro2.text = (isLocked) ? "Locked Door" : "Open Door";
                 doorCollider.enabled = isLocked;
             }
         }
