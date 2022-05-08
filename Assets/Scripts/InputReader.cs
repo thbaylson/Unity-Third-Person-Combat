@@ -46,4 +46,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         MovementValue = context.ReadValue<Vector2>();
     }
+
+    // Cinemachine is handling all Look inputs for us. No need to add code, but we still need the method so that Cinemachine can see it.
+    public void OnLook(InputAction.CallbackContext context){}
 }
