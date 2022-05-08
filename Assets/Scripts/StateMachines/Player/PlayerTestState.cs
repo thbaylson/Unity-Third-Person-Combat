@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class PlayerTestState : PlayerBaseState
 {
-    [SerializeField] private float stateDuration = 5f;
+    [SerializeField] private float timer;
 
     public PlayerTestState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         Debug.Log("Enter");
+
+        // Subscribe to InputReader Action events
+        stateMachine.InputReader.JumpEvent += OnJump;
     }
 
     public override void Tick(float deltaTime)
     {
-        stateDuration -= Time.deltaTime;
-        Debug.Log(stateDuration);
-
-        if (stateDuration <= 0f)
-        {
-            stateMachine.SwitchState(new PlayerTestState(stateMachine));
-        }
+        timer += Time.deltaTime;
+        Debug.Log(timer);
     }
 
     public override void Exit()
     {
         Debug.Log("Exit");
+
+        // Unsubscribe to InputReader Action events
+        stateMachine.InputReader.JumpEvent -= OnJump;
+    }
+
+    private void OnJump()
+    {
+        Debug.Log("Jumping");
+        stateMachine.SwitchState(new PlayerTestState(stateMachine));
     }
 }
