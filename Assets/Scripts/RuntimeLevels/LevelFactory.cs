@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace ThirdPersonCombat.RuntimeLevels
         [SerializeField] PlayerStateMachine playerPrefab;
         PlayerStateMachine playerInstance;
 
+        [SerializeField] CinemachineFreeLook freeLookCamera;
+
         [SerializeField] int numRooms;
         [SerializeField] [Range(0, 10)] int keyDropChance;
 
@@ -23,22 +26,33 @@ namespace ThirdPersonCombat.RuntimeLevels
         // Start is called before the first frame update
         void Start()
         {
+            // If the level already exists, destroy it
             if (levelInstance != null) Destroy(levelInstance.gameObject);
 
+            // Instantiate the level instance
             levelInstance = Instantiate(levelPrefab, Vector3.zero, Quaternion.identity, transform);
 
+            // Configure the level
             levelInstance.SetRoomNumber(numRooms);
             levelInstance.SetKeyDropChance(keyDropChance);
-
             levelInstance.SetBackTracking(backTrackFactor, backTrackChance);
             levelInstance.SetChangeDirectionChance(changeDirectionChance);
-
             levelInstance.Generate();
 
+            // If the player already exists, destroy it
             if (playerInstance != null) Destroy(playerInstance.gameObject);
+
+            // Get where the player should spawn
             Room initialRoom = levelInstance.GetRoomAt(0);
-            Vector3 playerStartPos = new Vector3(initialRoom.transform.position.x, playerPrefab.transform.localScale.y, initialRoom.transform.position.z);
+            Vector3 playerStartPos = new Vector3(initialRoom.transform.position.x, 0f, initialRoom.transform.position.z);
+            
+            // Instantiate the player instance
             playerInstance = Instantiate(playerPrefab, playerStartPos, Quaternion.identity, transform);
+
+            // Set the main camera's Follow and Look At fields
+            freeLookCamera.Follow = playerInstance.transform.Find("CameraFocus");
+            freeLookCamera.LookAt = playerInstance.transform.Find("mixamorig:Hips");
+            
         }
 
         // Update is called once per frame
