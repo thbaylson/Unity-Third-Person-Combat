@@ -29,6 +29,8 @@ namespace ThirdPersonCombat.RuntimeLevels
                 textMeshPro.text = (isLocked) ? "Locked Door" : "Open Door";
                 textMeshPro2.text = (isLocked) ? "Locked Door" : "Open Door";
                 doorCollider.enabled = isLocked;
+
+                GetComponent<MeshRenderer>().enabled = isLocked;
             }
         }
 
