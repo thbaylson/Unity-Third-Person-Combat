@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1417924560898148739, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1877885300341184280, guid: 793c15253169f934b960060853abdf42, type: 3}
       propertyPath: textMeshPro
       value: 
@@ -74,5 +78,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2036350909959499178, guid: 793c15253169f934b960060853abdf42, type: 3}
+    - {fileID: 1417924560898148739, guid: 793c15253169f934b960060853abdf42, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 793c15253169f934b960060853abdf42, type: 3}

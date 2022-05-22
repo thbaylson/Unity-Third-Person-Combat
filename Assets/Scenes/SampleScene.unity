@@ -176,7 +176,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9195231, y: 1}
+    m_SensorSize: {x: 2.0730252, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9195231, y: 1}
+    m_SensorSize: {x: 2.0730252, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 1825084646016831321, guid: 0c3aa78819d620c43985b0c9a4d9c1df, type: 3}
   freeLookCamera: {fileID: 548157109}
   numRooms: 7
-  keyDropChance: 5
+  keyDropChance: 10
   backTrackFactor: 3
   backTrackChance: 5
   changeDirectionChance: 1
@@ -923,7 +923,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9195231, y: 1}
+    m_SensorSize: {x: 2.0730252, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1001,7 +1001,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9195231, y: 1}
+    m_SensorSize: {x: 2.0730252, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
