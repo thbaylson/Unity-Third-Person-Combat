@@ -8,22 +8,18 @@ namespace ThirdPersonCombat.RuntimeLevels
 {
     public class Level : MonoBehaviour
     {
-        [SerializeField] Room roomPrefab;
-        [SerializeField] List<Room> rooms;
+        [SerializeField] List<Room> rooms = new List<Room>();
+        [SerializeField] List<Room> roomPool = new List<Room>();
+        [SerializeField] List<Type> placedItems = new List<Type>();
 
         [SerializeField] Door doorPrefab;
         [SerializeField] Door wallGapFiller;
-
-        [SerializeField] KeyPickup keyPrefab;
 
         // Create an array of translations to perform on the current coordinate
         private static List<Vector2Int> translations = new List<Vector2Int> { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
         int[][] roomArray;
         int numRooms;
-
-        int keyDropChance;
-        int numKeysPlaced = 0;
 
         int backTrackFactor;
         int backTrackChance;
@@ -43,9 +39,9 @@ namespace ThirdPersonCombat.RuntimeLevels
             numRooms = num;
         }
 
-        public void SetKeyDropChance(int num)
+        public void SetRoomPool(List<Room> rooms)
         {
-            keyDropChance = num;
+            roomPool = rooms;
         }
 
         public void SetBackTracking(int btFactor, int btChance)
@@ -66,7 +62,6 @@ namespace ThirdPersonCombat.RuntimeLevels
             Room currentRoom;
             while (rooms.Count < numRooms)
             {
-                // Make AddRoom return the Room object as room
                 currentRoom = AddRoom(GetNextRoomPosition());
                 AddRoomContent(currentRoom);
             }
@@ -77,11 +72,6 @@ namespace ThirdPersonCombat.RuntimeLevels
         private void AddRoomContent(Room currentRoom)
         {
             //Add keys, enemies, items, etc
-            bool isKeyRoom = GetChance(keyDropChance);
-            if (isKeyRoom)
-            {
-                currentRoom.Spawn(keyPrefab, transform.Find("Pickups"));
-            }
         }
 
         private Vector2Int GetNextRoomPosition()
@@ -91,7 +81,7 @@ namespace ThirdPersonCombat.RuntimeLevels
 
             // Do we continue off of the last placed room, or backtrack to a previous room to continue off of?
             int backTrackAmount;
-            if (rooms.Count > 3 && !recentlyBackTracked)
+            if (rooms.Count > backTrackFactor && !recentlyBackTracked)
             {
                 bool isBackTracking = GetChance(backTrackChance);
                 backTrackAmount = (isBackTracking) ? UnityEngine.Random.Range(1, backTrackFactor) : 1;
@@ -206,6 +196,25 @@ namespace ThirdPersonCombat.RuntimeLevels
             // "Fill" the index in the array
             roomArray[position.x][position.y] = 1;
 
+            // Get a list of rooms whose requirements are a subset of the list of items placed
+            List<Room> roomPrefabs = GetValidRooms();
+
+            // Get a random room from the list of prefabs and its Item if it has one
+            Room roomPrefab = roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Count)];
+            placedItems.Add(roomPrefab.GetItem()?.GetType());
+
+            // Keys are single use items. Placing a room that requires a key should remove the key from placedItems
+            // Get a list of all the keys. This is important for counting keys
+            List<Item> keys = roomPrefab.GetRequirements().Where(item => item.GetType() == typeof(KeyPickup)).ToList();
+            if (keys.Count() > 0)
+            {
+                // Remove keys based on how many keys the last room placed required
+                for(int i = 0; i < keys.Count(); i++)
+                {
+                    placedItems.Remove(typeof(KeyPickup));
+                }
+            }
+
             // Get the worldspace position
             Vector2 offset = new Vector2(position.x * roomPrefab.roomLength, position.y * roomPrefab.roomLength);
             Vector3 offsetPos = new Vector3(offset.x, 0f, offset.y);
@@ -220,11 +229,51 @@ namespace ThirdPersonCombat.RuntimeLevels
             return roomInstance;
         }
 
+        private List<Room> GetValidRooms()
+        {
+            List<Room> validRooms = new List<Room>();
+            foreach(Room r in roomPool)
+            {
+                List<Item> requirements = r.GetRequirements();
+
+                // If a room does not have requirements, then it's always valid
+                if(requirements.Count == 0)
+                {
+                    validRooms.Add(r);
+                    continue;
+                }
+
+                bool allItemsPlaced = true;
+                foreach(Item i in requirements)
+                {
+                    // Count how many times that item has been placed
+                    int placedItemAmount = placedItems.Where(placed => placed == i.GetType())?.Count() ?? 0;
+
+                    // Count how many of that item is required for this room
+                    int requiredItemAmount = requirements.Where(requirement => requirement.GetType() == i.GetType())?.Count() ?? 0;
+
+                    // If the Item has been placed at least as many times as it's required, then the room is valid
+                    // Check for each item. If any of the items fail this condition, the room is not valid
+                    allItemsPlaced = allItemsPlaced && (placedItemAmount >= requiredItemAmount);
+                }
+
+                if (allItemsPlaced)
+                {
+                    validRooms.Add(r);
+                }
+            }
+
+            return validRooms;
+        }
+
         private void AddDoors()
         {
             int checkX;
             int checkY;
+            bool isRoom;
+            bool isRoomNear;
             Vector2Int roomCoords;
+            Room neighbor;
 
             foreach (Room r in rooms)
             {
@@ -236,9 +285,14 @@ namespace ThirdPersonCombat.RuntimeLevels
                 {
                     checkX = roomCoords.x + translation.x;
                     checkY = roomCoords.y + translation.y;
-                    if (IsValidCoord(checkX, checkY) && roomArray[checkX][checkY] == 1)
+                    isRoom = IsValidCoord(checkX, checkY) && roomArray[checkX][checkY] == 1;
+
+                    neighbor = rooms.Find(r => r.GetCoords().Equals(new Vector2Int(checkX, checkY)));
+                    isRoomNear = Mathf.Abs(rooms.IndexOf(r) - rooms.IndexOf(neighbor)) < backTrackFactor;
+
+                    if (isRoom && isRoomNear)
                     {
-                        r.SetWall(doorPrefab, translation);
+                        r.SetDoor(doorPrefab, translation);
                     }
                     else
                     {

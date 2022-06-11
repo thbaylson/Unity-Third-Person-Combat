@@ -16,11 +16,11 @@ namespace ThirdPersonCombat.RuntimeLevels
         [SerializeField] CinemachineFreeLook freeLookCamera;
 
         [SerializeField] int numRooms;
-        [SerializeField] [Range(0, 10)] int keyDropChance;
+        [SerializeField] List<Room> roomPool;
 
-        [SerializeField] int backTrackFactor;
+        // backTrackFactor of less than 3 does nothing. Should probably never get close to 20, but I wanted a high ceiling just in case
+        [SerializeField] [Range(3, 20)] int backTrackFactor;
         [SerializeField] [Range(0, 10)] int backTrackChance;
-
         [SerializeField] [Range(0, 10)] int changeDirectionChance;
 
         // Start is called before the first frame update
@@ -34,7 +34,7 @@ namespace ThirdPersonCombat.RuntimeLevels
 
             // Configure the level
             levelInstance.SetRoomNumber(numRooms);
-            levelInstance.SetKeyDropChance(keyDropChance);
+            levelInstance.SetRoomPool(roomPool);
             levelInstance.SetBackTracking(backTrackFactor, backTrackChance);
             levelInstance.SetChangeDirectionChance(changeDirectionChance);
             levelInstance.Generate();
@@ -53,30 +53,6 @@ namespace ThirdPersonCombat.RuntimeLevels
             freeLookCamera.Follow = playerInstance.transform.Find("CameraFocus");
             freeLookCamera.LookAt = playerInstance.transform.Find("mixamorig:Hips");
             
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        //    if (Input.GetMouseButtonDown(0))
-        //    {
-        //        if (levelInstance != null) Destroy(levelInstance.gameObject);
-
-        //        levelInstance = Instantiate(levelPrefab, Vector3.zero, Quaternion.identity, transform);
-
-        //        levelInstance.SetRoomNumber(numRooms);
-        //        levelInstance.SetKeyDropChance(keyDropChance);
-
-        //        levelInstance.SetBackTracking(backTrackFactor, backTrackChance);
-        //        levelInstance.SetChangeDirectionChance(changeDirectionChance);
-
-        //        levelInstance.Generate();
-
-        //        if (playerInstance != null) Destroy(playerInstance.gameObject);
-        //        Room initialRoom = levelInstance.GetRoomAt(0);
-        //        Vector3 playerStartPos = new Vector3(initialRoom.transform.position.x, playerPrefab.transform.localScale.y, initialRoom.transform.position.z);
-        //        playerInstance = Instantiate(playerPrefab, playerStartPos, Quaternion.identity, transform);
-        //    }
         }
     }
 }

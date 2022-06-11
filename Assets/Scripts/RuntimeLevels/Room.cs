@@ -16,13 +16,12 @@ namespace ThirdPersonCombat.RuntimeLevels
         [SerializeField] Transform southWallGap;
         [SerializeField] Transform westWallGap;
 
-        private Vector2Int coords;
-        private List<Item> progressionRequirements = new List<Item>();
+        [SerializeField] List<Item> progressionRequirements = new List<Item>();
+        [SerializeField] Item progressionItem;
 
-        public void AddRequirement(Item item)
-        {
-            progressionRequirements.Add(item);
-        }
+        [SerializeField] int lockedDoors;
+
+        private Vector2Int coords;
 
         public void Spawn(Item item, Transform parent)
         {
@@ -35,6 +34,21 @@ namespace ThirdPersonCombat.RuntimeLevels
             return coords;
         }
 
+        public List<Item> GetRequirements()
+        {
+            return progressionRequirements;
+        }
+
+        public Item GetItem()
+        {
+            return progressionItem;
+        }
+
+        public void SetRequirements(List<Item> items)
+        {
+            progressionRequirements = items;
+        }
+
         public void SetTextInfo(int number)
         {
             textInfo.text = $"{number}\n({coords.x},{coords.y})";
@@ -44,6 +58,12 @@ namespace ThirdPersonCombat.RuntimeLevels
         {
             coords = new Vector2Int(x, y);
         }
+
+        public void SetDoor(Door door, Vector2Int translation)
+        {
+            SetWall(door, translation);
+        }
+
         public void SetWall(Door gapFiller, Vector2Int translation)
         {
             if (translation.Equals(Vector2Int.up))
@@ -96,6 +116,14 @@ namespace ThirdPersonCombat.RuntimeLevels
 
             Door door = Instantiate(gapFiller, Vector3.zero, Quaternion.identity, wallGap);
             door.transform.localPosition = Vector3.zero;
+
+            // If the door is meant to be locked, lock it
+            if (door.GetComponent<Animator>() != null && lockedDoors > 0)
+            {
+                door.GetComponent<Animator>().SetBool("isClosed", true);
+                lockedDoors--;
+            }
+
             return door;
         }
     }
