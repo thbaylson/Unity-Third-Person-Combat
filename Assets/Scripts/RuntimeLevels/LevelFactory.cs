@@ -10,10 +10,8 @@ namespace ThirdPersonCombat.RuntimeLevels
         [SerializeField] Level levelPrefab;
         [SerializeField] Level levelInstance;
 
-        [SerializeField] PlayerStateMachine playerPrefab;
-        PlayerStateMachine playerInstance;
-
-        [SerializeField] CinemachineFreeLook freeLookCamera;
+        [SerializeField] GameObject playerPrefab;
+        GameObject playerInstance;
 
         [SerializeField] int numRooms;
         [SerializeField] List<Room> roomPool;
@@ -48,10 +46,6 @@ namespace ThirdPersonCombat.RuntimeLevels
             
             // Instantiate the player instance
             playerInstance = Instantiate(playerPrefab, playerStartPos, Quaternion.identity, transform);
-
-            // Set the main camera's Follow and Look At fields
-            freeLookCamera.Follow = playerInstance.transform.Find("CameraFocus");
-            freeLookCamera.LookAt = playerInstance.transform.Find("mixamorig:Hips");
             
         }
     }
