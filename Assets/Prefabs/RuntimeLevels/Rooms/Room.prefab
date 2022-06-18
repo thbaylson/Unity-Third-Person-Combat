@@ -660,6 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3762710624979007998}
   - component: {fileID: 788032542179301489}
+  - component: {fileID: 8801910335304872760}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -704,7 +705,20 @@ MonoBehaviour:
   southWallGap: {fileID: 6319823922818827639}
   westWallGap: {fileID: 3954695148106826491}
   progressionRequirements: []
-  progressionItem: []
+  progressionItem: {fileID: 0}
+  lockedDoors: 0
+--- !u!114 &8801910335304872760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3973726351974626386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e56d8c4ecf0e84394d27e88c73de06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4747021781301322108
 GameObject:
   m_ObjectHideFlags: 0

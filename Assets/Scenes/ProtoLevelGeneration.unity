@@ -204,7 +204,7 @@ MonoBehaviour:
   levelPrefab: {fileID: 3880954319387066642, guid: adf8bd1a56fec5f479484c92463ed058, type: 3}
   levelInstance: {fileID: 0}
   playerPrefab: {fileID: 1859861073346649913, guid: 404539c3aa75d2f49954ae9463b94637, type: 3}
-  numRooms: 16
+  numRooms: 20
   roomPool:
   - {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
   - {fileID: 7995709822489648139, guid: 65e287c69f508094599389555bdb9e33, type: 3}
@@ -220,7 +220,7 @@ MonoBehaviour:
   - {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
   - {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
   backTrackFactor: 3
-  backTrackChance: 5
+  backTrackChance: 2
   changeDirectionChance: 1
 --- !u!4 &666916952
 Transform:
@@ -465,7 +465,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 3.4e-44, y: 3.44495e-40, z: 6e-44, w: 2.524355e-29}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
