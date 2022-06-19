@@ -21,7 +21,9 @@ namespace ThirdPersonCombat.RuntimeLevels
         int[][] roomArray;
         int numRooms;
 
-        int backTrackFactor;
+        // The next room placed must be at least 2 rooms away from the last placed room to be considered backtracking
+        int minBackTrackAmount = 2;
+        int maxBackTrackAmount;
         int backTrackChance;
         bool recentlyBackTracked;
 
@@ -46,7 +48,7 @@ namespace ThirdPersonCombat.RuntimeLevels
 
         public void SetBackTracking(int btFactor, int btChance)
         {
-            backTrackFactor = btFactor;
+            maxBackTrackAmount = btFactor;
             backTrackChance = btChance;
         }
 
@@ -81,10 +83,11 @@ namespace ThirdPersonCombat.RuntimeLevels
 
             // Do we continue off of the last placed room, or backtrack to a previous room to continue off of?
             int backTrackAmount;
-            if (rooms.Count > backTrackFactor && !recentlyBackTracked)
+            if (rooms.Count > maxBackTrackAmount && !recentlyBackTracked)
             {
                 bool isBackTracking = GetChance(backTrackChance);
-                backTrackAmount = (isBackTracking) ? UnityEngine.Random.Range(1, backTrackFactor) : 1;
+
+                backTrackAmount = (isBackTracking) ? UnityEngine.Random.Range(minBackTrackAmount, maxBackTrackAmount) : 1;
                 recentlyBackTracked = backTrackAmount > 1;
             }
             else
@@ -100,7 +103,7 @@ namespace ThirdPersonCombat.RuntimeLevels
             // Continue off the last placed room
             Vector2Int newRoomCoords = GetNextNeighbor(lastRoomCoords);
 
-            int cnt = 1;// Inifinite loop safegaurd. Find a better way
+            int cnt = 1;// Inifinite loop safegaurd. TODO: Find a better way
             bool roomFound = newRoomCoords != lastRoomCoords;
             while (!roomFound && (cnt++ <= 100))
             {
@@ -288,7 +291,7 @@ namespace ThirdPersonCombat.RuntimeLevels
                     isRoom = IsValidCoord(checkX, checkY) && roomArray[checkX][checkY] == 1;
 
                     neighbor = rooms.Find(r => r.GetCoords().Equals(new Vector2Int(checkX, checkY)));
-                    isRoomNear = Mathf.Abs(rooms.IndexOf(r) - rooms.IndexOf(neighbor)) < backTrackFactor;
+                    isRoomNear = Mathf.Abs(rooms.IndexOf(r) - rooms.IndexOf(neighbor)) <= maxBackTrackAmount;
 
                     if (isRoom && isRoomNear)
                     {
