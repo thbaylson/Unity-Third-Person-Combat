@@ -10,6 +10,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public event Action JumpEvent;
     public event Action DodgeEvent;
+    public event Action TargetEvent;
+    public event Action CancelTargetEvent;
 
     private Controls controls;
 
@@ -49,4 +51,18 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     // Cinemachine is handling all Look inputs for us. No need to add code, but we still need the method so that Cinemachine can see it.
     public void OnLook(InputAction.CallbackContext context){}
+
+    public void OnTarget(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        TargetEvent?.Invoke();
+    }
+
+    public void OnCancelTarget(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        CancelTargetEvent?.Invoke();
+    }
 }

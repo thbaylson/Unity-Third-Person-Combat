@@ -11,6 +11,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.InputReader.TargetEvent += OnTarget;
     }
 
     public override void Tick(float deltaTime)
@@ -33,6 +34,15 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.TargetEvent -= OnTarget;
+    }
+
+    private void OnTarget()
+    {
+        // If there are no available targets, do not enter the targeting state
+        if (!stateMachine.Targeter.SelectTarget()) { return; }
+
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 
     /**<summary>Calculates the direction that the player will move in relative to the camera.</summary>*/
