@@ -10,4 +10,10 @@ public abstract class PlayerBaseState : State
     {
         this.stateMachine = stateMachine;
     }
+
+    protected void Move(Vector3 motion, float deltaTime)
+    {
+        // Use the CharacterController Component to move the player
+        stateMachine.Controller.Move((stateMachine.ForceReceiver.Movement + motion) * deltaTime);
+    }
 }

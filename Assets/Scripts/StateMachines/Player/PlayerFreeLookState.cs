@@ -21,8 +21,8 @@ public class PlayerFreeLookState : PlayerBaseState
         // Use InputReader's MovementValue to get input information
         Vector3 movement = CalculateMovementDirection();
 
-        // Use the CharacterController Component to move the player
-        stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
+        // Pass motion information and deltaTime to PlayerBaseState
+        Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
