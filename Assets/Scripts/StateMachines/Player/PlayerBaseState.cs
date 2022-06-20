@@ -16,4 +16,14 @@ public abstract class PlayerBaseState : State
         // Use the CharacterController Component to move the player
         stateMachine.Controller.Move((stateMachine.ForceReceiver.Movement + motion) * deltaTime);
     }
+
+    protected void FaceTarget()
+    {
+        if(stateMachine.Targeter.CurrentTarget == null) { return; }
+
+        Vector3 lookAtVector = stateMachine.Targeter.CurrentTarget.transform.position - stateMachine.transform.position;
+        lookAtVector.y = 0f;
+
+        stateMachine.transform.rotation = Quaternion.LookRotation(lookAtVector);
+    }
 }
