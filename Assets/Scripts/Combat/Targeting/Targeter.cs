@@ -7,8 +7,14 @@ public class Targeter : MonoBehaviour
 {
     [SerializeField] CinemachineTargetGroup cineTargetGroup;
 
+    private Camera mainCamera;
     private List<Target> targets = new List<Target>();
     public Target CurrentTarget { get; private set; }
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,10 +36,34 @@ public class Targeter : MonoBehaviour
 
     public bool SelectTarget()
     {
-        // Return false because no target was set
+        // Return false because there is nothing to target
         if(targets.Count == 0) { return false; }
 
-        CurrentTarget = targets[0];
+        Target closestTarget = null;
+        float closestTargetDist = Mathf.Infinity;
+        foreach(Target target in targets)
+        {
+            // Get where the target is relative to the camera's viewport
+            Vector2 viewPos = mainCamera.WorldToViewportPoint(target.transform.position);
+            
+            // We know the target is on screen if viewPos is between (0, 0) and (1, 1)
+            if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1) { continue; }
+
+            // Calculate how close this target is to the center of the screen, (0.5, 0.5)
+            Vector2 toCenter = viewPos - new Vector2(0.5f, 0.5f);
+
+            // Check to see if this target is closer to the center than the current closestTarget
+            if(toCenter.sqrMagnitude < closestTargetDist)
+            {
+                // Square magnitude is more efficient to calc than just magnitude
+                closestTarget = target;
+                closestTargetDist = toCenter.sqrMagnitude;
+            }
+        }
+
+        if(closestTarget == null) { return false; }
+
+        CurrentTarget = closestTarget;
         cineTargetGroup.AddMember(CurrentTarget.transform, 1f, 2f);
 
         // Return true because we were able to set a target
