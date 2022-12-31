@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
+    public bool IsAttacking { get; private set; }
     public Vector2 MovementValue { get; private set; }
 
     public event Action JumpEvent;
@@ -64,5 +65,18 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         if (!context.performed) return;
 
         CancelTargetEvent?.Invoke();
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        // Boolean allows players to hold the button down to keep attacking.
+        // An event would change the behavior to be one attack per button press.
+        if (context.performed)
+        {
+            IsAttacking = true;
+        }else if (context.canceled)
+        {
+            IsAttacking = false;
+        }
     }
 }
