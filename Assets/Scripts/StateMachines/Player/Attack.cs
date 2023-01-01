@@ -15,7 +15,12 @@ public class Attack
     // Default to -1 for attacks that do not combo or attacks that are the last attack of a combo
     [field: SerializeField] public int ComboStateIndex { get; private set; } = -1;
     // The minimum amount of time an animation must play before you can start the next attack
-    // (This might represent a percentage of an animation, not an exact time interval)
+    // This represents a percentage of an animation, not an exact time interval
     [field: SerializeField] public float ComboAttackTime { get; private set; }
+    // How far into the animation we need to be before we apply force to the character
+    // This represents a percentage of how far into the attack animation we are (eg. 0 for just starting and 1 for just finished)
+    [field: SerializeField] public float ForceTime { get; private set; }
+    // The amount of force that gets added to the character
+    [field: SerializeField] public float Force { get; private set; }
 
 }

@@ -1231,6 +1231,52 @@ Transform:
   m_Father: {fileID: 4390245000381185333}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -10.993198, y: 7.5698557, z: -13.824539}
+--- !u!1 &3899436442568883712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1146918123250909186}
+  - component: {fileID: 8023522777197691236}
+  m_Layer: 0
+  m_Name: WeaponLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1146918123250909186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899436442568883712}
+  m_LocalRotation: {x: 0.003964838, y: 0.031780988, z: -0.12373204, w: 0.9917987}
+  m_LocalPosition: {x: -0.376, y: 0.174, z: 0.049}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5792461929139295747}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0.901, y: 3.558, z: -14.194}
+--- !u!136 &8023522777197691236
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899436442568883712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.25
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3974239025876773495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,6 +1430,7 @@ GameObject:
   - component: {fileID: 5945180935610543086}
   - component: {fileID: 6455458928128837981}
   - component: {fileID: 5218679661537882803}
+  - component: {fileID: 5148222724877590062}
   - component: {fileID: 4464560564343824086}
   - component: {fileID: 6627711257481250229}
   m_Layer: 0
@@ -1440,14 +1487,20 @@ MonoBehaviour:
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.6
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
   - <AnimationName>k__BackingField: Attack3
     <TransitionDuration>k__BackingField: 0.2
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 20
 --- !u!114 &5945180935610543086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1486,6 +1539,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6627711257481250229}
+  drag: 0.05
+--- !u!114 &5148222724877590062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978219716640543898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ee4b208b26d3343a0c2afe91d0de26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponLogic: {fileID: 3899436442568883712}
 --- !u!95 &4464560564343824086
 Animator:
   serializedVersion: 4
@@ -2598,6 +2665,7 @@ Transform:
   - {fileID: 3988833675583590087}
   - {fileID: 4390245000381185333}
   - {fileID: 3928035233579813421}
+  - {fileID: 1146918123250909186}
   m_Father: {fileID: 7657253291400223843}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -12.559041, y: 5.3037033, z: 11.596521}
