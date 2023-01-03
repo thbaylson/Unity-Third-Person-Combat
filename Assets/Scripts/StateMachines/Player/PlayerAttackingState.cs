@@ -16,6 +16,9 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
+        // Get the attack damage for the current attack
+        stateMachine.WeaponDamage.SetAttack(attack.Damage);
+
         // Transitions into the attack animation instead putting a hard stop to the current one
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }

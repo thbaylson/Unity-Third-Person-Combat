@@ -22,5 +22,7 @@ public class Attack
     [field: SerializeField] public float ForceTime { get; private set; }
     // The amount of force that gets added to the character
     [field: SerializeField] public float Force { get; private set; }
+    // How much damage this attack will do
+    [field: SerializeField] public int Damage { get; private set; }
 
 }

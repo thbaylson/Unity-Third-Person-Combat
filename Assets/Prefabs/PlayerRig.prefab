@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658230801655291304}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000015389868, y: 0, z: 4.2720017}
+  m_LocalPosition: {x: 0.00000015389853, y: 0, z: 4.2720017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -235,7 +235,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3068941162054943675}
-  m_LocalRotation: {x: 0.04882205, y: -0.7051265, z: 0.048781343, w: 0.7057149}
+  m_LocalRotation: {x: 0.029386401, y: -0.7064959, z: 0.029386397, w: 0.706496}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7003106, y: 1}
+    m_SensorSize: {x: 1.5962733, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -313,7 +313,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3068941162093599762}
-  m_LocalRotation: {x: 0.023154775, y: -0.70643306, z: 0.023135463, w: 0.7070226}
+  m_LocalRotation: {x: 0.0037035786, y: -0.70709705, z: 0.0037035781, w: 0.7070971}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7003106, y: 1}
+    m_SensorSize: {x: 1.5962733, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -391,7 +391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3068941162753676708}
-  m_LocalRotation: {x: 0.035977386, y: -0.70589715, z: 0.03594738, w: 0.70648617}
+  m_LocalRotation: {x: 0.01653074, y: -0.7069135, z: 0.01653074, w: 0.70691365}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -436,7 +436,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7003106, y: 1}
+    m_SensorSize: {x: 1.5962733, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 11
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 5300745946266436384}
+  m_LookAt: {fileID: 9192388689000734167}
   m_Follow: {fileID: 9192388689000734167}
   m_CommonLens: 1
   m_Lens:
@@ -766,7 +766,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7003106, y: 1}
+    m_SensorSize: {x: 1.5962733, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -909,7 +909,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3810650181165633167}
-  m_LocalRotation: {x: 0.1784248, y: 0.000000018928644, z: -0.0000000034324175, w: 0.9839536}
+  m_LocalRotation: {x: 0.1784248, y: -0.000000018928624, z: 0.0000000034324144, w: 0.9839536}
   m_LocalPosition: {x: 0.27348003, y: 2.0531228, z: -5.112279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -948,7 +948,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7003106, y: 1}
+    m_SensorSize: {x: 1.5962733, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1232,11 +1232,6 @@ PrefabInstance:
 --- !u!4 &414430766949458868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5646916728165551648, guid: 0c3aa78819d620c43985b0c9a4d9c1df, type: 3}
-  m_PrefabInstance: {fileID: 5448715969474538900}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5300745946266436384 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 147970164985081524, guid: 0c3aa78819d620c43985b0c9a4d9c1df, type: 3}
   m_PrefabInstance: {fileID: 5448715969474538900}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &8532338202531951426 stripped

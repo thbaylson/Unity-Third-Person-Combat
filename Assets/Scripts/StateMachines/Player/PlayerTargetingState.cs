@@ -9,12 +9,16 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int TargetingForwardSpeedHash = Animator.StringToHash("TargetingForwardSpeed");
     private readonly int TargetingRightSpeedHash = Animator.StringToHash("TargetingRightSpeed");
 
+    private const float AnimatorDampTime = 0.1f;
+    // The transition time between this and another animation
+    private const float CrossFadeDuration = 0.1f;
+
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         stateMachine.InputReader.CancelTargetEvent += OnCancelTarget;
-        stateMachine.Animator.Play(BlendTreeHash);
+        stateMachine.Animator.CrossFadeInFixedTime(BlendTreeHash, CrossFadeDuration);
     }
 
     public override void Tick(float deltaTime)
@@ -69,22 +73,22 @@ public class PlayerTargetingState : PlayerBaseState
 
         if(stateMachine.InputReader.MovementValue.y == 0)
         {
-            stateMachine.Animator.SetFloat(TargetingForwardSpeedHash, 0f, 0.1f, deltaTime);
+            stateMachine.Animator.SetFloat(TargetingForwardSpeedHash, 0f, AnimatorDampTime, deltaTime);
         }
         else
         {
             discreteMovementValue = stateMachine.InputReader.MovementValue.y > 0 ? 1f : -1f;
-            stateMachine.Animator.SetFloat(TargetingForwardSpeedHash, discreteMovementValue, 0.1f, deltaTime);
+            stateMachine.Animator.SetFloat(TargetingForwardSpeedHash, discreteMovementValue, AnimatorDampTime, deltaTime);
         }
 
         if (stateMachine.InputReader.MovementValue.x == 0)
         {
-            stateMachine.Animator.SetFloat(TargetingRightSpeedHash, 0f, 0.1f, deltaTime);
+            stateMachine.Animator.SetFloat(TargetingRightSpeedHash, 0f, AnimatorDampTime, deltaTime);
         }
         else
         {
             discreteMovementValue = stateMachine.InputReader.MovementValue.x > 0 ? 1f : -1f;
-            stateMachine.Animator.SetFloat(TargetingRightSpeedHash, discreteMovementValue, 0.1f, deltaTime);
+            stateMachine.Animator.SetFloat(TargetingRightSpeedHash, discreteMovementValue, AnimatorDampTime, deltaTime);
         }
     }
 }

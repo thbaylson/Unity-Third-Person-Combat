@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6252651033095534028}
   - component: {fileID: 6279730345646851825}
   - component: {fileID: 2323381584121353187}
+  - component: {fileID: 7011498316697763416}
   m_Layer: 0
   m_Name: TargetCube
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6332769739006274651
 MeshFilter:
@@ -110,3 +111,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500ee3363cde7c343a07dd7ca9f8ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7011498316697763416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7652109634710616536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b251454fd7ae6c84cab09391cb69c67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
