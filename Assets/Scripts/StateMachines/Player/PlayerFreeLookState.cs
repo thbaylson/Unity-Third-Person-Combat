@@ -7,9 +7,11 @@ public class PlayerFreeLookState : PlayerBaseState
     // Allows calls to the Animator to use this int hash instead of string references
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
     private readonly int BlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+    // This is how long the animator will take to get to the new value
     private const float AnimatorDampTime = 0.1f;
     // The transition time between this and another animation
     private const float CrossFadeDuration = 0.1f;
+
     public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()

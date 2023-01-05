@@ -204,9 +204,16 @@ MonoBehaviour:
   levelPrefab: {fileID: 3880954319387066642, guid: adf8bd1a56fec5f479484c92463ed058, type: 3}
   levelInstance: {fileID: 0}
   playerPrefab: {fileID: 1859861073346649913, guid: 404539c3aa75d2f49954ae9463b94637, type: 3}
-  numRooms: 5
+  numRooms: 6
   roomPool:
+  - {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
   - {fileID: 623281063559420006, guid: 72e19140db48c204ab9abaa6ad64e7eb, type: 3}
+  - {fileID: 6909623947687695461, guid: b5275728c37e8984993265e6819af907, type: 3}
+  - {fileID: 7995709822489648139, guid: 65e287c69f508094599389555bdb9e33, type: 3}
+  - {fileID: 8182533658800912755, guid: f21d087d27bb9f045b6c78d899d42aad, type: 3}
+  - {fileID: 4199757507963328961, guid: 3ebe709b4fa1ee64f9dc9b252a914788, type: 3}
+  - {fileID: 1878004977718919978, guid: a8779bcc2c1e0bb41985e77561800950, type: 3}
+  - {fileID: 9064964813211896386, guid: cc48ee4c7a80b4f4781a93e7de9b9597, type: 3}
   backTrackFactor: 3
   backTrackChance: 10
   changeDirectionChance: 0

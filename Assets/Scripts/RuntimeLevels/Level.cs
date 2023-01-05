@@ -235,6 +235,16 @@ namespace ThirdPersonCombat.RuntimeLevels
         private List<Room> GetValidRooms()
         {
             List<Room> validRooms = new List<Room>();
+            
+            // If this is the very first room, then pick the first in the list. This will always make the start room safe
+            // TODO: Make a SafeRoomPool to add variety and remove this hardcoded bit
+            if(rooms.Count == 0)
+            {
+                validRooms.Add(roomPool[0]);
+                return validRooms;
+            }
+            
+            // Determine which rooms are valid
             foreach(Room r in roomPool)
             {
                 List<Item> requirements = r.GetRequirements();
