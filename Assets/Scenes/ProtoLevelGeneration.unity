@@ -204,7 +204,7 @@ MonoBehaviour:
   levelPrefab: {fileID: 3880954319387066642, guid: adf8bd1a56fec5f479484c92463ed058, type: 3}
   levelInstance: {fileID: 0}
   playerPrefab: {fileID: 1859861073346649913, guid: 404539c3aa75d2f49954ae9463b94637, type: 3}
-  numRooms: 6
+  numRooms: 7
   roomPool:
   - {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
   - {fileID: 623281063559420006, guid: 72e19140db48c204ab9abaa6ad64e7eb, type: 3}

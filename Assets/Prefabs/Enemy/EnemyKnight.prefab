@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2935541867821066188, guid: cf66cbb306389384d863285df30686a6, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: EnemyKnight
       objectReference: {fileID: 0}
     - target: {fileID: 3123934674873628575, guid: cf66cbb306389384d863285df30686a6, type: 3}
       propertyPath: m_RootOrder
@@ -55,6 +55,14 @@ PrefabInstance:
     - target: {fileID: 3123934674873628575, guid: cf66cbb306389384d863285df30686a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948579698640582702, guid: cf66cbb306389384d863285df30686a6, type: 3}
+      propertyPath: <MovementSpeed>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948579698640582702, guid: cf66cbb306389384d863285df30686a6, type: 3}
+      propertyPath: <PlayerChaseRange>k__BackingField
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

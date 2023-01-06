@@ -2090,10 +2090,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8021320113194249859}
   - component: {fileID: -3589051856256284872}
+  - component: {fileID: 6293129480832571868}
   - component: {fileID: 1804544102817571802}
   - component: {fileID: 47258287880790322}
   - component: {fileID: 7933494658227844289}
   - component: {fileID: 1164308745300922521}
+  - component: {fileID: -2162778880469076650}
   m_Layer: 0
   m_Name: EnemyWarrok
   m_TagString: Untagged
@@ -2138,6 +2140,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &6293129480832571868
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833490295038639824}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!143 &1804544102817571802
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2169,6 +2193,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: -3589051856256284872}
+  <Controller>k__BackingField: {fileID: 1804544102817571802}
+  <ForceReceiver>k__BackingField: {fileID: -2162778880469076650}
+  <Agent>k__BackingField: {fileID: 6293129480832571868}
+  <MovementSpeed>k__BackingField: 3
+  <PlayerChaseRange>k__BackingField: 15
 --- !u!114 &7933494658227844289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2193,7 +2222,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b251454fd7ae6c84cab09391cb69c67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
+--- !u!114 &-2162778880469076650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833490295038639824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f354d7f5becf9488cd70dc87af0149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1804544102817571802}
+  drag: 0.3
 --- !u!1 &7890611592199621141
 GameObject:
   m_ObjectHideFlags: 0
