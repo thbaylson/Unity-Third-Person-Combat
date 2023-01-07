@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    // Allows calls to the Animator to use this int hash instead of string references
-    private readonly int SpeedHash = Animator.StringToHash("Speed");
-    private readonly int LocomotionHash = Animator.StringToHash("Locomotion");
-    // This is how long the animator will take to get to the new value
-    private const float AnimatorDampTime = 0.1f;
-    // The transition time between this and another animation
-    private const float CrossFadeDuration = 0.1f;
+    protected readonly int LocomotionHash = Animator.StringToHash("Locomotion");
 
     public EnemyIdleState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
@@ -29,6 +23,7 @@ public class EnemyIdleState : EnemyBaseState
             return;
         }
 
+        FacePlayer();
         stateMachine.Animator.SetFloat(SpeedHash, 0f, AnimatorDampTime, deltaTime);
     }
 

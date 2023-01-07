@@ -4,6 +4,13 @@ using UnityEngine;
 
 public abstract class EnemyBaseState : State
 {
+    // Allows calls to the Animator to use this int hash instead of string references
+    protected readonly int SpeedHash = Animator.StringToHash("Speed");
+    // This is how long the animator will take to get to the new value
+    protected const float AnimatorDampTime = 0.1f;
+    // The transition time between this and another animation
+    protected const float CrossFadeDuration = 0.1f;
+
     protected EnemyStateMachine stateMachine;
 
     public EnemyBaseState(EnemyStateMachine stateMachine)
@@ -33,7 +40,16 @@ public abstract class EnemyBaseState : State
         return playerDistSqr <= stateMachine.PlayerChaseRange * stateMachine.PlayerChaseRange;
     }
 
-    protected void FaceTarget()
+    protected bool IsInAttackRange()
+    {
+        // Square magnitude of the distance between this enemy and the player
+        float playerDistSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
+        // Because the magnitude is squared, we have to check that against the squared range
+        // More computationally efficient to check squares than to take the square root
+        return playerDistSqr <= stateMachine.AttackRange * stateMachine.PlayerChaseRange;
+    }
+
+    protected void FacePlayer()
     {
         if (stateMachine.Player == null) { return; }
 
