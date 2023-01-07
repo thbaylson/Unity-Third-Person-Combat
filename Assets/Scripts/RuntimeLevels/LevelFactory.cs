@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ThirdPersonCombat.RuntimeLevels
 {
@@ -46,7 +47,9 @@ namespace ThirdPersonCombat.RuntimeLevels
             
             // Instantiate the player instance
             playerInstance = Instantiate(playerPrefab, playerStartPos, Quaternion.identity, transform);
-            
+
+            // After everything is placed, bake the NavMesh
+            this.GetComponent<NavMeshSurface>().BuildNavMesh();
         }
     }
 }
