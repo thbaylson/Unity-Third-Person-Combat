@@ -27,8 +27,6 @@ public abstract class EnemyBaseState : State
 
     protected void Move(Vector3 motion, float deltaTime)
     {
-        Debug.Log($"{stateMachine.transform.name}: Move: Motion: {motion}");
-
         // Use the CharacterController Component to move the player
         stateMachine.Controller.Move((stateMachine.ForceReceiver.Movement + motion) * deltaTime);
     }
