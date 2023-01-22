@@ -38,15 +38,6 @@ public abstract class EnemyBaseState : State
         return playerDistSqr <= stateMachine.PlayerChaseRange * stateMachine.PlayerChaseRange;
     }
 
-    protected bool IsInAttackRange()
-    {
-        // Square magnitude of the distance between this enemy and the player
-        float playerDistSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
-        // Because the magnitude is squared, we have to check that against the squared range
-        // More computationally efficient to check squares than to take the square root
-        return playerDistSqr <= stateMachine.AttackRange * stateMachine.PlayerChaseRange;
-    }
-
     protected void FacePlayer()
     {
         if (stateMachine.Player == null) { return; }

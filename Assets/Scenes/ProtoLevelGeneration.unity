@@ -208,7 +208,7 @@ MonoBehaviour:
   numRooms: 7
   roomPool:
   - {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
-  - {fileID: 6909623947687695461, guid: b5275728c37e8984993265e6819af907, type: 3}
+  - {fileID: 623281063559420006, guid: 72e19140db48c204ab9abaa6ad64e7eb, type: 3}
   backTrackFactor: 3
   backTrackChance: 10
   changeDirectionChance: 0
