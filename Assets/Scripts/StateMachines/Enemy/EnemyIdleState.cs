@@ -15,6 +15,7 @@ public class EnemyIdleState : EnemyBaseState
     {
         Move(deltaTime);
 
+        // TODO: Consider chasing IFF the enemy can "see" the player (e.g. shoot a raycast towards the player)
         if (IsInChaseRange())
         {
             stateMachine.SwitchState(new EnemyChasingState(stateMachine));

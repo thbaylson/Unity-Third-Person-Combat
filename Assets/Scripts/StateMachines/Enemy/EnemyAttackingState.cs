@@ -8,6 +8,9 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Enter()
     {
+        // Consider a way to set range in the same way. Different weapons have different ranges.
+        stateMachine.Weapon.SetAttack(stateMachine.AttackDamage);
+
         stateMachine.Animator.CrossFadeInFixedTime(AttackHash, CrossFadeDuration);
     }
 
