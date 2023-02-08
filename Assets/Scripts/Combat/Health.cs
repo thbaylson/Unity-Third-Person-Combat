@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     private int health;
+
+    public event Action OnTakeDamage;
 
     // Start is called before the first frame update
     private void Start()
@@ -15,13 +16,13 @@ public class Health : MonoBehaviour
 
     public void DealDamage(int damage)
     {
+        // Dead things don't take damage
         if(health == 0) { return; }
 
         // If health is less than the damage being dealt, set health to 0
         // This prevents health from becoming negative
         health = health < damage ? 0 : health - damage;
-        Debug.Log($"{this.name} now has {health} health");
-        // Alternative way to keep health >= 0: 
-        //     health = Mathf.Max(health - damage, 0);
+
+        OnTakeDamage?.Invoke();
     }
 }

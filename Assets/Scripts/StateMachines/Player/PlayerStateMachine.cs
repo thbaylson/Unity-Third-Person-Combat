@@ -12,6 +12,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     // A reference to how much damage the weapon should do with each attack based on Damage values in the Attacks list
     [field: SerializeField] public WeaponDamage WeaponDamage { get; private set; }
+    [field: SerializeField] public Health Health { get; private set; }
     // The movement speed of the player when in the free look state
     [field: SerializeField] public float FreeLookMovementSpeed { get; private set; }
     // The movement speed of the player when targeting. Usually this is less than the free look movement speed
@@ -28,5 +29,24 @@ public class PlayerStateMachine : StateMachine
         MainCameraTransform = Camera.main.transform;
 
         SwitchState(new PlayerFreeLookState(this));
+    }
+
+
+    private void OnEnable()
+    {
+        // Subscribe to the event
+        Health.OnTakeDamage += HandleTakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        // Unsubscribe from the event
+        Health.OnTakeDamage -= HandleTakeDamage;
+    }
+
+    private void HandleTakeDamage()
+    {
+        // Whenever we take damage, no matter what state we are currently in, switch to the impact state
+        SwitchState(new PlayerImpactState(this));
     }
 }

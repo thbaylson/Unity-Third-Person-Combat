@@ -30,8 +30,14 @@ public class ForceReceiver : MonoBehaviour
         // This reduces forces over time using drag. It dampens impact towards zero.
         impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);
 
-        if(agent != null && impact == Vector3.zero)
+        // Because we are damping, the closer we get to zero the longer it'll take to actually hit zero.
+        // So we define a threshold that's "close enough" before letting the agents move again.
+        // If enemies look like they're running in place after getting hit, then change this threshold.
+        float impactThreshold = 0.2f;
+        bool isCloseEnough = impact.sqrMagnitude < impactThreshold * impactThreshold;
+        if (agent != null && isCloseEnough)
         {
+            impact = Vector3.zero;
             agent.enabled = true;
         }
     }
