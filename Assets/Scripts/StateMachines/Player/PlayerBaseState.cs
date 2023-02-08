@@ -5,6 +5,11 @@ using UnityEngine;
 public abstract class PlayerBaseState : State
 {
     protected PlayerStateMachine stateMachine;
+    
+    // This is how long the animator will take to get to the new value
+    protected const float AnimatorDampTime = 0.1f;
+    // The transition time between one animation and another
+    protected const float CrossFadeDuration = 0.1f;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -32,5 +37,18 @@ public abstract class PlayerBaseState : State
         lookAtVector.y = 0f;
 
         stateMachine.transform.rotation = Quaternion.LookRotation(lookAtVector);
+    }
+
+    // Helper method to be used in any state. Returns player to either FreeLookState or TargetingState
+    protected void ReturnToLocomotion()
+    {
+        if(stateMachine.Targeter.CurrentTarget != null)
+        {
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        }
+        else
+        {
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+        }
     }
 }
