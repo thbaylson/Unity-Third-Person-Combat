@@ -24,5 +24,7 @@ public class Attack
     [field: SerializeField] public float Force { get; private set; }
     // How much damage this attack will do
     [field: SerializeField] public int Damage { get; private set; }
+    // How much knockback this attack will do
+    [field: SerializeField] public float Knockback { get; private set; }
 
 }

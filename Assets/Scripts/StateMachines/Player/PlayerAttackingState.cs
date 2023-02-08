@@ -17,7 +17,7 @@ public class PlayerAttackingState : PlayerBaseState
     public override void Enter()
     {
         // Get the attack damage for the current attack
-        stateMachine.WeaponDamage.SetAttack(attack.Damage);
+        stateMachine.WeaponDamage.SetAttack(attack.Damage, attack.Knockback);
 
         // Transitions into the attack animation instead putting a hard stop to the current one
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
@@ -29,7 +29,7 @@ public class PlayerAttackingState : PlayerBaseState
         Move(deltaTime);
         FaceTarget();
 
-        float normalizedTime = GetNormalizedTime();
+        float normalizedTime = GetNormalizedTime(stateMachine.Animator);
         // Check if we are still in the attack animation. NormalizedTime >= 1 means the animation has ended.
         if(normalizedTime < 1f)
         {
@@ -66,30 +66,7 @@ public class PlayerAttackingState : PlayerBaseState
     {
     }
 
-    /** Checking animation states can get weird. If we are mid transition, it's hard to tell which animation
-     *  info we should be checking. This method will determine if we are transitioning and which info is needed. **/
-    private float GetNormalizedTime()
-    {
-        // Gets the current and next AnimatorStateInfos at layer 0
-        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = stateMachine.Animator.GetNextAnimatorStateInfo(0);
 
-        float normalizedTime = 0f;
-
-        // If we are currently transitioning animations AND the next animation is an attack animation...
-        if(stateMachine.Animator.IsInTransition(0) && nextInfo.IsTag("Attack"))
-        {
-            normalizedTime = nextInfo.normalizedTime;
-        }
-        // If we are not currently transitioning animations AND the current animation is an attack animation...
-        else if (!stateMachine.Animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
-        {
-            normalizedTime = currentInfo.normalizedTime;
-        }
-
-        // If neither of the above cases are true, this returns 0
-        return normalizedTime;
-    }
 
     private void TryComboAttack(float normalizedTime)
     {

@@ -8,6 +8,7 @@ public class WeaponDamage : MonoBehaviour
 
     private List<Collider> alreadyCollidedWith = new();
     private int damage;
+    private float knockback;
 
     private void OnEnable()
     {
@@ -29,11 +30,20 @@ public class WeaponDamage : MonoBehaviour
         {
             health.DealDamage(damage);
         }
+
+        if(other.TryGetComponent(out ForceReceiver forceReceiver))
+        {
+            // The direction of the force. 
+            // A normalized vector pointing away from the attacker in the direction of the attacked.
+            Vector3 forceDirection = (other.transform.position - myCollider.transform.position).normalized;
+            forceReceiver.AddForce(forceDirection * knockback);
+        }
     }
 
     // Sets how much damage the weapon will do with each attack
-    public void SetAttack(int damage)
+    public void SetAttack(int damage, float knockback)
     {
         this.damage = damage;
+        this.knockback = knockback;
     }
 }

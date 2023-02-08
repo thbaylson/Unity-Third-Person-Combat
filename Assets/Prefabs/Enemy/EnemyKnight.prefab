@@ -470,6 +470,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4948579698640582702, guid: cf66cbb306389384d863285df30686a6, type: 3}
+      propertyPath: <AttackKnockback>k__BackingField
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948579698640582702, guid: cf66cbb306389384d863285df30686a6, type: 3}
       propertyPath: <PlayerChaseRange>k__BackingField
       value: 10
       objectReference: {fileID: 0}

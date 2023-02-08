@@ -2280,6 +2280,7 @@ MonoBehaviour:
   <PlayerChaseRange>k__BackingField: 15
   <AttackRange>k__BackingField: 1.92
   <AttackDamage>k__BackingField: 50
+  <AttackKnockback>k__BackingField: 30
 --- !u!114 &7933494658227844289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2318,6 +2319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1804544102817571802}
+  agent: {fileID: 6293129480832571868}
   drag: 0.3
 --- !u!114 &423855706755186770
 MonoBehaviour:
