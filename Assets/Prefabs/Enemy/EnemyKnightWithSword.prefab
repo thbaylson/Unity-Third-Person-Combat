@@ -505,6 +505,10 @@ PrefabInstance:
       propertyPath: <AttackDamage>k__BackingField
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 4880807659482644731, guid: 35d89e38500b747409435ccf5f54bd64, type: 3}
+      propertyPath: <AttackKnockback>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5138803793638066742, guid: 35d89e38500b747409435ccf5f54bd64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 38.539654

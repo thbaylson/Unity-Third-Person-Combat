@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
@@ -34,13 +32,15 @@ public class PlayerStateMachine : StateMachine
 
     private void OnEnable()
     {
-        // Subscribe to the event
+        // Subscribe to events
         Health.OnTakeDamage += HandleTakeDamage;
+        Health.OnDie += HandleDie;
     }
 
     private void OnDisable()
     {
-        // Unsubscribe from the event
+        // Unsubscribe from events
+        Health.OnDie -= HandleDie;
         Health.OnTakeDamage -= HandleTakeDamage;
     }
 
@@ -48,5 +48,10 @@ public class PlayerStateMachine : StateMachine
     {
         // Whenever we take damage, no matter what state we are currently in, switch to the impact state
         SwitchState(new PlayerImpactState(this));
+    }
+
+    private void HandleDie()
+    {
+        SwitchState(new PlayerDeadState(this));
     }
 }
