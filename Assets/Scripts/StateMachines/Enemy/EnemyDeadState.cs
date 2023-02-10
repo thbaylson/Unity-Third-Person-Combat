@@ -6,7 +6,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log($"{stateMachine.transform.name} has died!");
+        stateMachine.Ragdoll.ToggleRagdoll(true);
 
         // Disable the weapon object. We don't want potentially active hitboxes lying around.
         stateMachine.Weapon.gameObject.SetActive(false);

@@ -349,6 +349,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -22.843729
       objectReference: {fileID: 0}
+    - target: {fileID: 2837011407353670875, guid: 35d89e38500b747409435ccf5f54bd64, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2891834708298184209, guid: 35d89e38500b747409435ccf5f54bd64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 1.9293011
@@ -499,7 +503,7 @@ PrefabInstance:
       objectReference: {fileID: 506095011915419734}
     - target: {fileID: 4880807659482644731, guid: 35d89e38500b747409435ccf5f54bd64, type: 3}
       propertyPath: <AttackRange>k__BackingField
-      value: 1.92
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 4880807659482644731, guid: 35d89e38500b747409435ccf5f54bd64, type: 3}
       propertyPath: <AttackDamage>k__BackingField

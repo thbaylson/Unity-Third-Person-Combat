@@ -10,6 +10,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Target Target { get; private set; }
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
     [field: SerializeField] public float MovementSpeed { get; private set; }
     [field: SerializeField] public float PlayerChaseRange { get; private set; }
     [field: SerializeField] public float AttackRange { get; private set; }
