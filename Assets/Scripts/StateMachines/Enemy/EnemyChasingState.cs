@@ -13,6 +13,8 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        FacePlayer();
+
         // Can the NavMesh actually get to the player
         bool navPathValid = stateMachine.Agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete;
 
@@ -28,7 +30,6 @@ public class EnemyChasingState : EnemyBaseState
             return;
         }
 
-        FacePlayer();
         MoveToPlayer(deltaTime);
 
         stateMachine.Animator.SetFloat(SpeedHash, 1f, AnimatorDampTime, deltaTime);

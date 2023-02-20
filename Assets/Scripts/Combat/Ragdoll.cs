@@ -20,7 +20,6 @@ public class Ragdoll : MonoBehaviour
 
         // Turn everything off at the start.
         ToggleRagdoll(false);
-        Debug.Log($"{this.name}: HERE");
     }
 
     public void ToggleRagdoll(bool isRagdoll)

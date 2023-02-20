@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTargetingState : PlayerBaseState
@@ -8,10 +5,6 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int BlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     private readonly int TargetingForwardSpeedHash = Animator.StringToHash("TargetingForwardSpeed");
     private readonly int TargetingRightSpeedHash = Animator.StringToHash("TargetingRightSpeed");
-
-    private const float AnimatorDampTime = 0.1f;
-    // The transition time between this and another animation
-    private const float CrossFadeDuration = 0.1f;
 
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
@@ -27,6 +20,12 @@ public class PlayerTargetingState : PlayerBaseState
         if (stateMachine.InputReader.IsAttacking)
         {
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine));
+            return;
+        }
+        // Transition to blocking
+        if (stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
             return;
         }
         // Transition to free look

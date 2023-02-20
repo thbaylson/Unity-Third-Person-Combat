@@ -16,6 +16,8 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        Move(deltaTime);
+
         // If we've finished the attacking animation, then switch to the chase state
         if (GetNormalizedTime(stateMachine.Animator) >= 1)
         {
