@@ -31,6 +31,9 @@ public abstract class EnemyBaseState : State
 
     protected bool IsInChaseRange()
     {
+        // Dead players don't need to be attacked. No sense beating a dead horse.
+        if (stateMachine.Player.IsDead) { return false; }
+
         // Square magnitude of the distance between this enemy and the player
         float playerDistSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
         // Because the magnitude is squared, we have to check that against the squared range

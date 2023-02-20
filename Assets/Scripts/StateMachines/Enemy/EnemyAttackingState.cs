@@ -16,13 +16,16 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        Move(deltaTime);
-
         // If we've finished the attacking animation, then switch to the chase state
         if (GetNormalizedTime(stateMachine.Animator) >= 1)
         {
             stateMachine.SwitchState(new EnemyChasingState(stateMachine));
         }
+
+        // Make sure we always look at the player before we attack.
+        // This helps make sure chaining attacks doesn't lock up Enemy rotation.
+        FacePlayer();
+        Move(deltaTime);
     }
 
     public override void Exit()

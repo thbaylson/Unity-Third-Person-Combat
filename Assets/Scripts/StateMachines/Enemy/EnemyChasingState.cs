@@ -13,8 +13,6 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        FacePlayer();
-
         // Can the NavMesh actually get to the player
         bool navPathValid = stateMachine.Agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete;
 
@@ -30,6 +28,7 @@ public class EnemyChasingState : EnemyBaseState
             return;
         }
 
+        FacePlayer();
         MoveToPlayer(deltaTime);
 
         stateMachine.Animator.SetFloat(SpeedHash, 1f, AnimatorDampTime, deltaTime);
@@ -60,6 +59,9 @@ public class EnemyChasingState : EnemyBaseState
     // TODO: This is nearly completely duplicated from IsInChaseRange(). Maybe those methods could be merged?
     protected bool IsInAttackRange()
     {
+        // Dead players don't need to be attacked. No sense beating a dead horse.
+        if (stateMachine.Player.IsDead) { return false; }
+
         // Square magnitude of the distance between this enemy and the player
         float playerDistSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
         // Because the magnitude is squared, we have to check that against the squared range

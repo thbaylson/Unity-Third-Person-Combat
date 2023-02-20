@@ -5,11 +5,13 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
 
+    public event Action OnDie;
+    public event Action OnTakeDamage;
+
+    public bool IsDead => health == 0;
+
     private int health;
     private bool isInvulnerable;
-
-    public event Action OnTakeDamage;
-    public event Action OnDie;
 
     // Start is called before the first frame update
     private void Start()

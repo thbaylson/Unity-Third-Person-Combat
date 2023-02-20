@@ -45,9 +45,13 @@ public class Targeter : MonoBehaviour
         {
             // Get where the target is relative to the camera's viewport
             Vector2 viewPos = mainCamera.WorldToViewportPoint(target.transform.position);
-            
-            // We know the target is on screen if viewPos is between (0, 0) and (1, 1)
-            if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1) { continue; }
+
+            // Only target if the enemy is actually visible. 
+            // Putting a GetComponentInChildren check in a foreach loop seems inefficient. May need to be changed.
+            if (!target.GetComponentInChildren<Renderer>().isVisible)
+            {
+                continue;
+            }
 
             // Calculate how close this target is to the center of the screen, (0.5, 0.5)
             Vector2 toCenter = viewPos - new Vector2(0.5f, 0.5f);

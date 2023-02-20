@@ -17,11 +17,11 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public int AttackDamage { get; private set; }
     [field: SerializeField] public int AttackKnockback { get; private set; }
 
-    public GameObject Player { get; private set; }
+    public Health Player { get; private set; }
 
     private void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 
         // These default to true, but for this game we don't want Unity's NavMeshAgent to move enemies
         // Enemy movement will be handled by a combination of state machines and the ForceReceiver class
