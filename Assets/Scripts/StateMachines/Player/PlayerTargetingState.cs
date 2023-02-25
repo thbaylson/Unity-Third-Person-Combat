@@ -6,11 +6,17 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int TargetingForwardSpeedHash = Animator.StringToHash("TargetingForwardSpeed");
     private readonly int TargetingRightSpeedHash = Animator.StringToHash("TargetingRightSpeed");
 
+    private Vector2 dodgingDirectionInput;
+    private float remainingDodgeTime;
+
+    // Targeting State currently handles Targeting, Blocking, and Dodging. These things may be too tightly coupled
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
         stateMachine.InputReader.CancelTargetEvent += OnCancelTarget;
+        stateMachine.InputReader.DodgeEvent += OnDodge;
+
         stateMachine.Animator.CrossFadeInFixedTime(BlendTreeHash, CrossFadeDuration);
     }
 
@@ -35,7 +41,7 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
-        Vector3 movement = CalculateMovement();
+        Vector3 movement = CalculateMovement(deltaTime);
 
         Move(movement * stateMachine.TargetingMovementSpeed, deltaTime);
 
@@ -46,6 +52,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.DodgeEvent -= OnDodge;
         stateMachine.InputReader.CancelTargetEvent -= OnCancelTarget;
     }
 
@@ -56,12 +63,46 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
     }
 
-    private Vector3 CalculateMovement()
+    private void OnDodge()
+    {
+        // This seems like a really weird way to do cooldowns. Seems tightly coupled?
+        // If the difference between the current time and the time when the last dodge was performed is less than the 
+        //      dodge cooldown, then don't dodge. For example: if the difference is very small then we must've dodged 
+        //      recently. The greater the difference, the greater amount of time must've passed.
+        if (Time.time - stateMachine.PreviousDodgeTime < stateMachine.DodgeCooldown) { return; }
+
+        // Store exactly which direction the player wants to dodge in
+        dodgingDirectionInput = stateMachine.InputReader.MovementValue;
+        remainingDodgeTime = stateMachine.DodgeDuration;
+
+        stateMachine.SetDodgeTime(Time.time);
+    }
+
+    private Vector3 CalculateMovement(float deltaTime)
     {
         Vector3 movement = new Vector3();
 
-        movement += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
-        movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+        // If we are currently dodging
+        if(remainingDodgeTime > 0f)
+        {
+            // The direction to move in
+            var dodgeDirectionRight = stateMachine.transform.right * dodgingDirectionInput.x;
+            var dodgeDirectionLeft = stateMachine.transform.forward * dodgingDirectionInput.y;
+            // The distance to move during this Update (Remember: CalculateMovement will be called once per Update)
+            var dodgeDistance = stateMachine.DodgeLength / stateMachine.DodgeDuration;
+            
+            movement += dodgeDirectionRight * dodgeDistance;
+            movement += dodgeDirectionLeft * dodgeDistance;
+
+            // Prevent remainingDodgeTime from becoming negative
+            remainingDodgeTime = Mathf.Max(remainingDodgeTime - deltaTime, 0f);
+        }
+        // If we are not currently dodging
+        else
+        {
+            movement += stateMachine.transform.right * stateMachine.InputReader.MovementValue.x;
+            movement += stateMachine.transform.forward * stateMachine.InputReader.MovementValue.y;
+        }
 
         return movement;
     }

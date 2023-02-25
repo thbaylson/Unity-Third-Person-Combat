@@ -18,9 +18,18 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float TargetingMovementSpeed { get; private set; }
     // Relates to how fast the player will rotate to face the direction they are moving in
     [field: SerializeField] public float RotationDamping { get; private set; }
+    // How long the dodge lasts in seconds
+    [field: SerializeField] public float DodgeDuration { get; private set; }
+    // How far to move the player when they dodge
+    [field: SerializeField] public float DodgeLength { get; private set; }
+    // Dodge Cooldown Timer. How many seconds the player must wait before being able to dodge again
+    [field: SerializeField] public float DodgeCooldown { get; private set; }
     // A list of Attacks. If there is more than one, previous Attacks combo into the next Attack in the list
     [field: SerializeField] public Attack[] Attacks { get; private set; }
-    
+
+    // Represents what Time.time was when the last dodge was performed. This seems like a weird way to do cooldowns
+    // We set this to -Infinity to make sure there aren't any issues performing the very first dodge (when it would otherwise be 0)
+    public float PreviousDodgeTime { get; private set; } = Mathf.NegativeInfinity;
     public Transform MainCameraTransform { get; private set; }
 
     private void Start()
@@ -29,7 +38,6 @@ public class PlayerStateMachine : StateMachine
 
         SwitchState(new PlayerFreeLookState(this));
     }
-
 
     private void OnEnable()
     {
@@ -54,5 +62,11 @@ public class PlayerStateMachine : StateMachine
     private void HandleDie()
     {
         SwitchState(new PlayerDeadState(this));
+    }
+
+    // Why don't we just use the property declared above to set the value?
+    public void SetDodgeTime(float dodgeTime)
+    {
+        PreviousDodgeTime = dodgeTime;
     }
 }
