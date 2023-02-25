@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerAttackingState : PlayerBaseState
 {
     private float previousFrameTime;
@@ -65,8 +60,6 @@ public class PlayerAttackingState : PlayerBaseState
     public override void Exit()
     {
     }
-
-
 
     private void TryComboAttack(float normalizedTime)
     {

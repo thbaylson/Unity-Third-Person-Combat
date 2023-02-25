@@ -13,6 +13,8 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.TargetEvent += OnTarget;
+        stateMachine.InputReader.JumpEvent += OnJump;
+
         stateMachine.Animator.CrossFadeInFixedTime(BlendTreeHash, CrossFadeDuration);
     }
 
@@ -44,6 +46,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit()
     {
+        stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.TargetEvent -= OnTarget;
     }
 
@@ -53,6 +56,12 @@ public class PlayerFreeLookState : PlayerBaseState
         if (!stateMachine.Targeter.SelectTarget()) { return; }
 
         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+    }
+
+    private void OnJump()
+    {
+        stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+        return;
     }
 
     /**<summary>Calculates the direction that the player will move in relative to the camera.</summary>*/

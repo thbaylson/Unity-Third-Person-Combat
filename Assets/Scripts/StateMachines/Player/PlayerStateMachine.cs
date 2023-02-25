@@ -24,6 +24,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float DodgeLength { get; private set; }
     // Dodge Cooldown Timer. How many seconds the player must wait before being able to dodge again
     [field: SerializeField] public float DodgeCooldown { get; private set; }
+    // How high the player will jump
+    [field: SerializeField] public float JumpForce { get; private set; }
     // A list of Attacks. If there is more than one, previous Attacks combo into the next Attack in the list
     [field: SerializeField] public Attack[] Attacks { get; private set; }
 
