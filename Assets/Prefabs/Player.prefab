@@ -2001,7 +2001,7 @@ MonoBehaviour:
     <ComboAttackTime>k__BackingField: 0.6
     <ForceTime>k__BackingField: 0.35
     <Force>k__BackingField: 15
-    <Damage>k__BackingField: 10
+    <Damage>k__BackingField: 1000
     <Knockback>k__BackingField: 2
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1

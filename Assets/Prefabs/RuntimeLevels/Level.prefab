@@ -77,11 +77,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3396e30a3febc458d3d4e7eefdc523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
   rooms: []
-  doorPrefab: {fileID: 1877885300341184280, guid: 793c15253169f934b960060853abdf42, type: 3}
-  wallGapFiller: {fileID: 3167209587190451430, guid: 392a3beab78ea844eb2bb936f7102214, type: 3}
-  keyPrefab: {fileID: 5040696136553053876, guid: 8ddceb71c9940614f9d9212ed1278fc9, type: 3}
+  roomPool: []
+  doorPrefab: {fileID: 3748830835335711199, guid: 2cdbfee1e9970584a83c371d5fa84c1e, type: 3}
+  wallGapFiller: {fileID: 6279808646109983557, guid: 392a3beab78ea844eb2bb936f7102214, type: 3}
 --- !u!1 &8174461334645673574
 GameObject:
   m_ObjectHideFlags: 0

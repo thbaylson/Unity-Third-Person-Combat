@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5970506007418888548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1522899861572736883, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308439055804695263, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412355838838220987, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792616514409796000, guid: 793c15253169f934b960060853abdf42, type: 3}
+      propertyPath: m_Name
+      value: Door2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1417924560898148739, guid: 793c15253169f934b960060853abdf42, type: 3}
+    - {fileID: 1877885300341184280, guid: 793c15253169f934b960060853abdf42, type: 3}
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 793c15253169f934b960060853abdf42, type: 3}
+--- !u!23 &384895527729849275 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6308439055804695263, guid: 793c15253169f934b960060853abdf42, type: 3}
+  m_PrefabInstance: {fileID: 5970506007418888548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2945030585647165636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8792616514409796000, guid: 793c15253169f934b960060853abdf42, type: 3}
+  m_PrefabInstance: {fileID: 5970506007418888548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4073975905203031890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945030585647165636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708356ac984c5f64fb0338b0d9e3fe7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockingCollider: {fileID: 5186197123342874135}
+  doorRenderer: {fileID: 384895527729849275}
+--- !u!65 &5186197123342874135 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1522899861572736883, guid: 793c15253169f934b960060853abdf42, type: 3}
+  m_PrefabInstance: {fileID: 5970506007418888548}
+  m_PrefabAsset: {fileID: 0}

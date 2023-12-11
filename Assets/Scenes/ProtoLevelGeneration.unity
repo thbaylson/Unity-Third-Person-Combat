@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.11257973, g: 0.41770256, b: 0.72310334, a: 1}
+  m_IndirectSpecularColor: {r: 0.11613611, g: 0.42406112, b: 0.73004746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -205,11 +205,11 @@ MonoBehaviour:
   levelPrefab: {fileID: 3880954319387066642, guid: adf8bd1a56fec5f479484c92463ed058, type: 3}
   levelInstance: {fileID: 0}
   playerPrefab: {fileID: 1859861073346649913, guid: 404539c3aa75d2f49954ae9463b94637, type: 3}
-  numRooms: 7
+  numRooms: 8
   roomPool:
-  - {fileID: 788032542179301489, guid: f644e61e29e2cff4bae166a919f182e8, type: 3}
-  - {fileID: 623281063559420006, guid: 72e19140db48c204ab9abaa6ad64e7eb, type: 3}
   - {fileID: 8182533658800912755, guid: f21d087d27bb9f045b6c78d899d42aad, type: 3}
+  - {fileID: 9064964813211896386, guid: cc48ee4c7a80b4f4781a93e7de9b9597, type: 3}
+  - {fileID: 9064964813211896386, guid: cc48ee4c7a80b4f4781a93e7de9b9597, type: 3}
   - {fileID: 9064964813211896386, guid: cc48ee4c7a80b4f4781a93e7de9b9597, type: 3}
   backTrackFactor: 3
   backTrackChance: 10

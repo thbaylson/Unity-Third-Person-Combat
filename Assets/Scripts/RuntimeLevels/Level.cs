@@ -13,8 +13,8 @@ namespace ThirdPersonCombat.RuntimeLevels
         [SerializeField] List<Room> roomPool = new List<Room>();
         [SerializeField] List<Type> placedItems = new List<Type>();
 
-        [SerializeField] Door doorPrefab;
-        [SerializeField] Door wallGapFiller;
+        [SerializeField] Transform doorPrefab;
+        [SerializeField] Transform wallGapFiller;
 
         // Create an array of translations to perform on the current coordinate
         private static List<Vector2Int> translations = new List<Vector2Int> { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };

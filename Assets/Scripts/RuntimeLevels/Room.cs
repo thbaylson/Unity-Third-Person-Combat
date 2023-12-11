@@ -59,12 +59,12 @@ namespace ThirdPersonCombat.RuntimeLevels
             coords = new Vector2Int(x, y);
         }
 
-        public void SetDoor(Door door, Vector2Int translation)
+        public void SetDoor(Transform door, Vector2Int translation)
         {
             SetWall(door, translation);
         }
 
-        public void SetWall(Door gapFiller, Vector2Int translation)
+        public void SetWall(Transform gapFiller, Vector2Int translation)
         {
             if (translation.Equals(Vector2Int.up))
             {
@@ -84,44 +84,48 @@ namespace ThirdPersonCombat.RuntimeLevels
             }
         }
 
-        private void SetNorthWall(Door gapFiller)
+        private void SetNorthWall(Transform gapFiller)
         {
             SetWall(northWallGap, gapFiller);
         }
 
-        private void SetEastWall(Door gapFiller)
+        private void SetEastWall(Transform gapFiller)
         {
-            Door door = SetWall(eastWallGap, gapFiller);
+            Transform door = SetWall(eastWallGap, gapFiller);
             door.transform.localRotation = new Quaternion(0f, 90f, 0f, 0f);
         }
 
-        private void SetSouthWall(Door gapFiller)
+        private void SetSouthWall(Transform gapFiller)
         {
-            Door door = SetWall(southWallGap, gapFiller);
+            Transform door = SetWall(southWallGap, gapFiller);
             door.transform.localRotation = new Quaternion(0f, 180f, 0f, 0f);
         }
 
-        private void SetWestWall(Door gapFiller)
+        private void SetWestWall(Transform gapFiller)
         {
-            Door door = SetWall(westWallGap, gapFiller);
+            Transform door = SetWall(westWallGap, gapFiller);
             door.transform.localRotation = new Quaternion(0f, 270f, 0f, 0f);
         }
 
-        private Door SetWall(Transform wallGap, Door gapFiller)
+        private Transform SetWall(Transform wallGap, Transform gapFiller)
         {
             // If there's already a door there, replace it
             BoxCollider previousFiller = wallGap.GetComponentInChildren<BoxCollider>();
             // Make sure we don't delete the wallGap transform itself
             if (previousFiller != null) Destroy(previousFiller.gameObject);
 
-            Door door = Instantiate(gapFiller, Vector3.zero, Quaternion.identity, wallGap);
+            Transform door = Instantiate(gapFiller, Vector3.zero, Quaternion.identity, wallGap);
             door.transform.localPosition = Vector3.zero;
 
             // If the door is meant to be locked, lock it
-            if (door.GetComponent<Animator>() != null && lockedDoors > 0)
+            if (lockedDoors > 0)
             {
-                door.GetComponent<Animator>().SetBool("isClosed", true);
+                door.GetComponent<IDoor>()?.SetClosedState(true);
                 lockedDoors--;
+            }
+            else
+            {
+                door.GetComponent<IDoor>()?.SetClosedState(false);
             }
 
             return door;
