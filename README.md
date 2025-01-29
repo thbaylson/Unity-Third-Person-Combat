@@ -15,4 +15,4 @@ From the course ["Unity 3rd Person: Combat & Traversal" by Nathan Farrer](https:
 
 - **Configurable Levels:** Properties of the level, number of rooms, room placement decisions, and kinds of rooms used are configurable from the inspector.
 - **Room Pool:** Rooms are randomly picked to be placed on a grid according to a chosen list of hand-made rooms.
-- **Gated Progression:** Progression granting rooms (with an key) and progression gated rooms (with a locked door) are intelligently distributed throughout the level.
+- **Gated Progression:** Progression granting rooms (with a key) and progression gated rooms (with a locked door) are intelligently distributed throughout the level.
