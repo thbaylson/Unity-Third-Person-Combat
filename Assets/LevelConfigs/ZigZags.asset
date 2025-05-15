@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3585cef21caa54cba4d98d1d928a95, type: 3}
+  m_Name: ZigZags
+  m_EditorClassIdentifier: 
+  levelWidth: 64
+  levelLength: 64
+  levelPadding: 1
+  roomMargin: 0
+  roomCountMin: 10
+  roomCountMax: 15
+  roomTemplates:
+  - name: Donuts
+    roomCount: 15
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 3697dc6f5f17a794c84e88df66e7f678, type: 3}
+  doorwayDistanceFromCorner: 1
+  hallwayWidthMin: 0
+  hallwayWidthMax: 0

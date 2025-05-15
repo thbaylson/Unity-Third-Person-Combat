@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3585cef21caa54cba4d98d1d928a95, type: 3}
+  m_Name: LargeMixed
+  m_EditorClassIdentifier: 
+  levelWidth: 128
+  levelLength: 128
+  levelPadding: 1
+  roomMargin: 0
+  roomCountMin: 35
+  roomCountMax: 45
+  roomTemplates:
+  - name: 1
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 6ae8c60512782a447968aaa539eda52e, type: 3}
+  - name: 2
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: e5064c661e4033343ae9a0d66320bf7b, type: 3}
+  - name: 3
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 37ecf5b464b17da47a0e468d2649db7e, type: 3}
+  - name: 4
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: e3c53d5921a77d142a820dd83a30b962, type: 3}
+  - name: 5
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: b38da4e94083b1f49857b8df542b534c, type: 3}
+  - name: 6
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 3697dc6f5f17a794c84e88df66e7f678, type: 3}
+  - name: 7
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 934824bafea9326479ef3a47c1f773d2, type: 3}
+  - name: 8
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 3e88267cfa03c20448bf092fa06ff727, type: 3}
+  - name: 9
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 588b44e110b3b9e43b3736372e0908c9, type: 3}
+  - name: 10
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 3134807f1003608418a42d10bbe46a7b, type: 3}
+  - name: 11
+    roomCount: 2
+    roomWidthMin: 0
+    roomWidthMax: 0
+    roomLengthMin: 0
+    roomLengthMax: 0
+    layoutTexture: {fileID: 2800000, guid: 2cc683d798b33254796c19a38077517b, type: 3}
+  - name: SmallNonSpecials
+    roomCount: 100
+    roomWidthMin: 0
+    roomWidthMax: 8
+    roomLengthMin: 3
+    roomLengthMax: 8
+    layoutTexture: {fileID: 0}
+  doorwayDistanceFromCorner: 1
+  hallwayWidthMin: 1
+  hallwayWidthMax: 3

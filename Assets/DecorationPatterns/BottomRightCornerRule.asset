@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cc6ed72a8c93f43b820a8043ebad04, type: 3}
+  m_Name: BottomRightCornerRule
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6519214928949641304, guid: cef1907dd77574d44a41501ed849fe9b, type: 3}
+  prefabRotation: 180
+  placement:
+    array: 04000000040000000200000004000000
+    width: 2
+    height: 2
+  fill:
+    array: 04000000040000000300000004000000
+    width: 2
+    height: 2
+  centerHorizontally: 0
+  centerVertically: 0

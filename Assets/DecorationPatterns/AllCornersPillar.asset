@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb00df7d84536d499de06f8d86ef745, type: 3}
+  m_Name: AllCornersPillar
+  m_EditorClassIdentifier: 
+  roomType: 255
+  childRules:
+  - {fileID: 11400000, guid: aa65d52a0e0e3f7409d41f0eab48e593, type: 2}
+  - {fileID: 11400000, guid: 82689f33b74246940a20351e5e971426, type: 2}
+  - {fileID: 11400000, guid: 812dd786f270cfb488f2315a654ffc67, type: 2}
+  - {fileID: 11400000, guid: 2b6cf0723919b7244a7c49b150c84dd7, type: 2}

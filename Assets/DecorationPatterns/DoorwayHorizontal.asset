@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cc6ed72a8c93f43b820a8043ebad04, type: 3}
+  m_Name: DoorwayHorizontal
+  m_EditorClassIdentifier: 
+  roomType: 255
+  prefab: {fileID: 4953197341839200020, guid: a96e32cadb7d82e43932beee64131007, type: 3}
+  prefabRotation: 90
+  placement:
+    array: 040000000200000002000000020000000400000002000000
+    width: 2
+    height: 3
+  fill:
+    array: 040000000300000002000000020000000400000003000000
+    width: 2
+    height: 3
+  centerHorizontally: 0
+  centerVertically: 0

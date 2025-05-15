@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3585cef21caa54cba4d98d1d928a95, type: 3}
+  m_Name: NarrowRooms
+  m_EditorClassIdentifier: 
+  levelWidth: 64
+  levelLength: 64
+  levelPadding: 1
+  roomMargin: 0
+  roomCountMin: 3
+  roomCountMax: 50
+  roomTemplates:
+  - name: Wide
+    roomCount: 20
+    roomWidthMin: 6
+    roomWidthMax: 8
+    roomLengthMin: 3
+    roomLengthMax: 3
+    layoutTexture: {fileID: 0}
+  - name: Tall
+    roomCount: 20
+    roomWidthMin: 3
+    roomWidthMax: 3
+    roomLengthMin: 6
+    roomLengthMax: 8
+    layoutTexture: {fileID: 0}
+  doorwayDistanceFromCorner: 1
+  hallwayWidthMin: 1
+  hallwayWidthMax: 1

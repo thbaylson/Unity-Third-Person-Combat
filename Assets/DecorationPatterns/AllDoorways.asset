@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb00df7d84536d499de06f8d86ef745, type: 3}
+  m_Name: AllDoorways
+  m_EditorClassIdentifier: 
+  roomType: 255
+  childRules:
+  - {fileID: 11400000, guid: b9b3097cb1ddb6940b5428b074dad552, type: 2}
+  - {fileID: 11400000, guid: cef431368e0821f45966aed5d7fed517, type: 2}
+  - {fileID: 11400000, guid: d387157ed1e5d5147b51cd2ba16650f0, type: 2}
+  - {fileID: 11400000, guid: b0f641e1434a21e418a710e7ffecdcca, type: 2}
